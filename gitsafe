@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Run a git command, then sweep aside lock/temp files git could not delete itself.
 #
 # The Cowork mount of this folder disallows unlink, so git leaves .git/index.lock
@@ -12,8 +12,9 @@
 D="$(cd "$(dirname "$0")" && pwd)"
 sweep() {
   mkdir -p "$D/_to_delete"
-  find "$D/.git" \( -name '*.lock' -o -name 'tmp_obj_*' \) 2>/dev/null | while read -r f; do
-    mv -n "$f" "$D/_to_delete/$(date +%s)_$(basename "$f")" 2>/dev/null || true
+  find "$D/.git" \( -name '*.lock' -o -name 'tmp_obj_*' \) -print0 2>/dev/null |
+  while IFS= read -r -d '' f; do
+    mv -n "$f" "$D/_to_delete/$(date +%s)_$$_$(basename "$f")" 2>/dev/null || true
   done
 }
 sweep
