@@ -1,0 +1,23 @@
+#!/bin/sh
+# Run a git command, then sweep aside lock/temp files git could not delete itself.
+#
+# The Cowork mount of this folder disallows unlink, so git leaves .git/index.lock
+# and tmp_obj_* behind and the NEXT git command fails with "File exists".
+# Moving them into _to_delete/ is permitted and keeps the repo usable.
+# Not needed when you run git from your own Terminal — only inside Cowork.
+#
+#   ./gitsafe add -A
+#   ./gitsafe commit -m "ep002"
+#   ./gitsafe push
+D="$(cd "$(dirname "$0")" && pwd)"
+sweep() {
+  mkdir -p "$D/_to_delete"
+  find "$D/.git" \( -name '*.lock' -o -name 'tmp_obj_*' \) 2>/dev/null | while read -r f; do
+    mv -n "$f" "$D/_to_delete/$(date +%s)_$(basename "$f")" 2>/dev/null || true
+  done
+}
+sweep
+git -C "$D" "$@"
+status=$?
+sweep
+exit $status
