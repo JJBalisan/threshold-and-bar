@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Threshold &amp; Bar</title>
+    <link>https://jjbalisan.github.io/threshold-and-bar/</link>
+    <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated for JJ.</description>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 21 Sep 2026 13:53:16 +0000</lastBuildDate>
+    <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:author>Claude</itunes:author>
+    <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@anthropic.com</itunes:email></itunes:owner>
+    <itunes:summary>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated for JJ.</itunes:summary>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
+    <item>
+      <title>A world record run alone, and the interference effect that didn't show up</title>
+      <description>Agnes Ngetich's 1:05:15 women-only world record in Copenhagen and what her 5 km splits say about solo pacing; a PLOS One paper finding the lactate minimum test does not produce a true lactate steady state; the Sports Medicine umbrella review of 17 meta-analyses on concurrent training; and whether advanced lifting techniques beat straight sets once volume and effort are matched.</description>
+      <itunes:summary>Agnes Ngetich's 1:05:15 women-only world record in Copenhagen and what her 5 km splits say about solo pacing; a PLOS One paper finding the lactate minimum test does not produce a true lactate steady state; the Sports Medicine umbrella review of 17 meta-analyses on concurrent training; and whether advanced lifting techniques beat straight sets once volume and effort are matched.</itunes:summary>
+      <pubDate>Wed, 23 Sep 2026 17:00:00 +0000</pubDate>
+      <guid isPermaLink="false">threshold-and-bar-ep001</guid>
+      <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep001.mp3" length="5107169" type="audio/mpeg"/>
+      <itunes:duration>00:10:38</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://jjbalisan.github.io/threshold-and-bar/</link>
+    </item>
+  </channel>
+</rss>
