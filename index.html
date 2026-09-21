@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Threshold &amp; Bar</title>
+<link rel="alternate" type="application/rss+xml" title="Threshold &amp; Bar" href="feed.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#f1f2ed; --surface:#fbfbf9; --ink:#1b1d1a; --muted:#5f6360;
+    --accent:#4c6a26; --accent-soft:#eaefdd; --rule:#d7dad1;
+    --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --cond:"IBM Plex Sans Condensed",var(--sans);
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#15171a; --surface:#1d2023; --ink:#e7eae3; --muted:#969c96;
+          --accent:#a7c65c; --accent-soft:#23281b; --rule:#2b2f33;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6;}
+  .wrap{max-width:46rem; margin:0 auto; padding-inline:20px; padding-block:48px 72px;}
+  h1,h2,h3{font-family:var(--cond); font-weight:700; text-wrap:balance; margin:0;}
+  h1{font-size:clamp(2rem,6vw,2.9rem); line-height:1.08;}
+  h2{font-size:1.05rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);}
+  p{margin:0}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;}
+  .standfirst{color:var(--muted); margin-top:14px; max-width:34em;}
+  .feedbox{margin-top:36px; background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:20px;}
+  .feedbox label{display:block; font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;}
+  .urlrow{display:flex; gap:10px; flex-wrap:wrap;}
+  #feedurl{flex:1 1 16rem; min-width:0; font-family:var(--mono); font-size:.82rem; color:var(--ink);
+           background:var(--bg); border:1px solid var(--rule); border-radius:6px; padding:11px 12px;}
+  #copy{flex:0 0 auto; font-family:var(--sans); font-size:.88rem; font-weight:500; cursor:pointer;
+        background:var(--accent); color:var(--bg); border:1px solid var(--accent); border-radius:6px; padding:11px 18px;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .steps{margin-top:40px}
+  ol{margin:16px 0 0; padding-left:0; list-style:none; counter-reset:s; display:grid; gap:14px;}
+  ol li{counter-increment:s; display:grid; grid-template-columns:1.6rem 1fr; gap:12px; align-items:start;}
+  ol li::before{content:counter(s); font-family:var(--mono); font-size:.72rem; color:var(--accent);
+                background:var(--accent-soft); border-radius:4px; text-align:center; padding:3px 0; line-height:1.3;}
+  .episodes{margin-top:48px}
+  .ep{border-top:1px solid var(--rule); padding-block:22px; display:grid; gap:7px;}
+  .ep:last-child{border-bottom:1px solid var(--rule)}
+  .epmeta{font-family:var(--mono); font-size:.72rem; color:var(--muted); font-variant-numeric:tabular-nums; display:flex; gap:14px; flex-wrap:wrap;}
+  .epmeta .no{color:var(--accent)}
+  .eptitle{font-family:var(--cond); font-weight:600; font-size:1.22rem; line-height:1.25;}
+  .epdesc{color:var(--muted); font-size:.94rem}
+  audio{width:100%; margin-top:6px}
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--rule); color:var(--muted); font-size:.85rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Private feed &middot; weekly, Wednesdays 18:00</p>
+  <h1>Threshold &amp; Bar</h1>
+  <p class="standfirst">Middle- and long-distance running science, hybrid training for running and triathlon, and strength sports &mdash; read from the literature and from JJ's own sources each week.</p>
+
+  <div class="feedbox">
+    <label for="feedurl">RSS feed</label>
+    <div class="urlrow">
+      <input id="feedurl" readonly value="" aria-label="RSS feed URL">
+      <button id="copy" type="button">Copy</button>
+    </div>
+  </div>
+
+  <section class="steps">
+    <h2>Adding it to Pocket Casts</h2>
+    <ol>
+      <li>Copy the feed URL above.</li>
+      <li>Open Pocket Casts and go to the <strong>Discover</strong> or <strong>Podcasts</strong> screen.</li>
+      <li>Paste the URL into the search bar and subscribe to the podcast that appears. Overcast, Apple Podcasts and most other apps work the same way.</li>
+    </ol>
+  </section>
+
+  <section class="episodes">
+    <h2>Episodes</h2>
+    <div id="eplist"></div>
+  </section>
+
+  <footer>
+    <p>Written and narrated by Claude. Every claim is sourced in the companion notes that arrive with each episode.</p>
+  </footer>
+</div>
+
+<script>
+  var field = document.getElementById("feedurl");
+  field.value = new URL("feed.xml", location.href).href;
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var btn = this, old = btn.textContent;
+    var done = function (m) { btn.textContent = m; setTimeout(function(){ btn.textContent = old; }, 1800); };
+    try {
+      navigator.clipboard.writeText(field.value).then(function(){ done("Copied"); },
+                                                      function(){ field.select(); done("Select & copy"); });
+    } catch (e) { field.select(); done("Select & copy"); }
+  });
+
+  fetch("episodes.json").then(function(r){ return r.json(); }).then(function(eps){
+    eps.sort(function(a,b){ return b.no - a.no; });
+    var list = document.getElementById("eplist");
+    eps.forEach(function(e){
+      var el = document.createElement("article");
+      el.className = "ep";
+      el.innerHTML =
+        '<div class="epmeta"><span class="no">EP ' + String(e.no).padStart(3,"0") + '</span>' +
+        '<span>' + e.date + '</span><span>' + e.duration + '</span></div>' +
+        '<h3 class="eptitle"></h3><p class="epdesc"></p>' +
+        '<audio controls preload="none" src="' + e.file + '"></audio>';
+      el.querySelector(".eptitle").textContent = e.title;
+      el.querySelector(".epdesc").textContent = e.summary;
+      list.appendChild(el);
+    });
+  }).catch(function(){});
+</script>
+</body>
+</html>
