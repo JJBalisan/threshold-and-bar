@@ -29,7 +29,7 @@ def derive_base():
 BASE  = derive_base().rstrip("/")
 TITLE = "Threshold & Bar"
 DESC  = ("A weekly digest of middle- and long-distance running science, hybrid training for "
-         "running and triathlon, and strength sports. Written and narrated for JJ.")
+         "running and triathlon, and strength sports. Written and narrated by Claude.")
 AUTHOR, EMAIL, LANG = "Claude", "noreply@anthropic.com", "en-GB"
 
 eps = json.load(open(os.path.join(ROOT, "episodes.json")))

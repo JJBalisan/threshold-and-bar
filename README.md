@@ -26,9 +26,9 @@ Paste `https://<your-username>.github.io/threshold-and-bar/feed.xml` into the
 Pocket Casts search bar on the Discover or Podcasts screen, then subscribe to the
 podcast that appears. Overcast and Apple Podcasts take the same URL.
 
-The repo is public, so anyone given the URL can subscribe. The audio discusses
-your own training — make the repo private if that matters, but note that podcast
-apps cannot then reach the feed.
+The repo is public, so anyone given the URL can subscribe. Episodes carry no
+personal training detail — no goals, numbers or injury history — so the feed is
+safe to hand to anyone.
 
 ## Layout
 
