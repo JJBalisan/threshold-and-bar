@@ -18,7 +18,9 @@ sweep() {
   done
 }
 sweep
-git -C "$D" "$@"
+# Identity for commits made from inside Cowork. Set here rather than in the
+# repo config so commits JJ makes from his own Terminal keep his own name.
+git -C "$D" -c user.name="Claude" -c user.email="noreply@anthropic.com" "$@"
 status=$?
 sweep
 exit $status
