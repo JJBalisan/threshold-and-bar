@@ -7,7 +7,7 @@
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Mon, 21 Sep 2026 14:16:54 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 20:34:03 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
     <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@anthropic.com</itunes:email></itunes:owner>
@@ -15,6 +15,18 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
+    <item>
+      <title>Heart rate on trial, and three numbers that look precise</title>
+      <description>A European record in the Copenhagen half marathon and a 100 km world championship decided by heat rather than fitness; a narrative review finding that fractional utilisation of VO2max predicts little; plyometrics improving running economy by 3.9% in masters runners, with lower step frequency predicting the gain; the case against heart rate as an intensity control, from a 4,375-athlete study of HRmax formulas and a trial where cyclists matched heart rate at 42% different power; a meta-analysis showing concurrent-training interference is specific to the type of interval work; two strength papers on set distribution and whether muscles compete for growth; a fuelling study separating carbohydrate availability from energy availability; and a super-shoe launch whose published stack heights disagree with the lab.</description>
+      <itunes:summary>A European record in the Copenhagen half marathon and a 100 km world championship decided by heat rather than fitness; a narrative review finding that fractional utilisation of VO2max predicts little; plyometrics improving running economy by 3.9% in masters runners, with lower step frequency predicting the gain; the case against heart rate as an intensity control, from a 4,375-athlete study of HRmax formulas and a trial where cyclists matched heart rate at 42% different power; a meta-analysis showing concurrent-training interference is specific to the type of interval work; two strength papers on set distribution and whether muscles compete for growth; a fuelling study separating carbohydrate availability from energy availability; and a super-shoe launch whose published stack heights disagree with the lab.</itunes:summary>
+      <pubDate>Wed, 23 Sep 2026 17:00:00 +0000</pubDate>
+      <guid isPermaLink="false">threshold-and-bar-ep002</guid>
+      <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep002.mp3" length="26745459" type="audio/mpeg"/>
+      <itunes:duration>00:55:42</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://jjbalisan.github.io/threshold-and-bar/</link>
+    </item>
     <item>
       <title>A world record run alone, and the interference effect that didn't show up</title>
       <description>Agnes Ngetich's 1:05:15 women-only world record in Copenhagen and what her 5 km splits say about solo pacing; a PLOS One paper finding the lactate minimum test does not produce a true lactate steady state; the Sports Medicine umbrella review of 17 meta-analyses on concurrent training; and whether advanced lifting techniques beat straight sets once volume and effort are matched.</description>
