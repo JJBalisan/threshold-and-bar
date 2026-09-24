@@ -31,17 +31,22 @@ TITLE = "Threshold & Bar"
 DESC  = ("A weekly digest of middle- and long-distance running science, hybrid training for "
          "running and triathlon, and strength sports. Written and narrated by Claude.")
 AUTHOR, EMAIL, LANG = "Claude", "noreply@anthropic.com", "en-GB"
+MUSIC_CREDIT = (" Music: intro and interludes from \u201cDans la tentative d\u2019accomplir quelque chose\u201d by "
+    "Frederic Lardon feat. Laura Palm\u00e9e (CC0). Outro: \u201cCrap Transition\u201d by Jesse Spillane, "
+    "https://freemusicarchive.org/music/Jesse_Spillane/Art_of_Presentation/Jesse_Spillane_-_Art_of_Presentation_-_04_Crap_Transition/ "
+    "licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); trimmed, faded and mixed with narration.")
 COVER = "cover.jpg"   # 2000x2000 sRGB JPEG; Apple wants 1400-3000 px square, JPEG or PNG
 
 eps = json.load(open(os.path.join(ROOT, "episodes.json")))
 eps.sort(key=lambda e: e["no"], reverse=True)
 
 def item(e):
+    summary = e["summary"] + (MUSIC_CREDIT if e.get("music") else "")
     pub = datetime.strptime(e["date"], "%Y-%m-%d").replace(hour=17, tzinfo=timezone.utc)
     return f"""    <item>
       <title>{escape(e["title"])}</title>
-      <description>{escape(e["summary"])}</description>
-      <itunes:summary>{escape(e["summary"])}</itunes:summary>
+      <description>{escape(summary)}</description>
+      <itunes:summary>{escape(summary)}</itunes:summary>
       <pubDate>{format_datetime(pub)}</pubDate>
       <guid isPermaLink="false">threshold-and-bar-ep{e["no"]:03d}</guid>
       <enclosure url="{escape(BASE + "/" + e["file"])}" length="{e["bytes"]}" type="audio/mpeg"/>
