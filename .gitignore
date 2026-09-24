@@ -1,7 +1,6 @@
 .DS_Store
 .git-credentials
 *.wav
-_to_delete/
 .deploy-token
 
 # launchd agent carries absolute paths and the local username - keep it off the public repo
