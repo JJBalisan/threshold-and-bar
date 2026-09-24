@@ -7,13 +7,15 @@
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Thu, 24 Sep 2026 13:38:51 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 13:41:53 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
     <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@anthropic.com</itunes:email></itunes:owner>
     <itunes:summary>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
+    <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
+    <image><url>https://jjbalisan.github.io/threshold-and-bar/cover.jpg</url><title>Threshold &amp; Bar</title><link>https://jjbalisan.github.io/threshold-and-bar/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
     <item>
       <title>Downhill, cadence and the talk test</title>
@@ -24,6 +26,7 @@
       <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep003.mp3" length="11279003" type="audio/mpeg"/>
       <itunes:duration>00:23:30</itunes:duration>
       <itunes:episode>3</itunes:episode>
+      <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
       <itunes:explicit>false</itunes:explicit>
       <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     </item>
@@ -36,6 +39,7 @@
       <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep002.mp3" length="26745459" type="audio/mpeg"/>
       <itunes:duration>00:55:42</itunes:duration>
       <itunes:episode>2</itunes:episode>
+      <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
       <itunes:explicit>false</itunes:explicit>
       <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     </item>
@@ -48,6 +52,7 @@
       <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep001.mp3" length="5077601" type="audio/mpeg"/>
       <itunes:duration>00:10:35</itunes:duration>
       <itunes:episode>1</itunes:episode>
+      <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
       <itunes:explicit>false</itunes:explicit>
       <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     </item>

@@ -31,6 +31,7 @@ TITLE = "Threshold & Bar"
 DESC  = ("A weekly digest of middle- and long-distance running science, hybrid training for "
          "running and triathlon, and strength sports. Written and narrated by Claude.")
 AUTHOR, EMAIL, LANG = "Claude", "noreply@anthropic.com", "en-GB"
+COVER = "cover.jpg"   # 2000x2000 sRGB JPEG; Apple wants 1400-3000 px square, JPEG or PNG
 
 eps = json.load(open(os.path.join(ROOT, "episodes.json")))
 eps.sort(key=lambda e: e["no"], reverse=True)
@@ -46,6 +47,7 @@ def item(e):
       <enclosure url="{escape(BASE + "/" + e["file"])}" length="{e["bytes"]}" type="audio/mpeg"/>
       <itunes:duration>{e["duration"]}</itunes:duration>
       <itunes:episode>{e["no"]}</itunes:episode>
+      <itunes:image href="{escape(BASE + "/" + COVER)}"/>
       <itunes:explicit>false</itunes:explicit>
       <link>{escape(BASE)}/</link>
     </item>"""
@@ -66,6 +68,8 @@ feed = f"""<?xml version="1.0" encoding="UTF-8"?>
     <itunes:summary>{escape(DESC)}</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
+    <itunes:image href="{escape(BASE + "/" + COVER)}"/>
+    <image><url>{escape(BASE + "/" + COVER)}</url><title>{escape(TITLE)}</title><link>{escape(BASE)}/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
 {chr(10).join(item(e) for e in eps)}
   </channel>
