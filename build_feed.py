@@ -5,14 +5,14 @@ Base URL is derived from the git remote (user/repo -> https://user.github.io/rep
 unless given as argv[1] or $FEED_BASE.
 """
 
+import datetime
 import json
 import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
-from email.utils import format_datetime
-from xml.sax.saxutils import escape
+from email import utils as email_utils
+from xml.sax import saxutils
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TITLE = "Threshold & Bar"
@@ -51,21 +51,21 @@ def derive_base(argv):
 
 def item(e, base):
     summary = e["summary"] + (MUSIC_CREDIT if e.get("music") else "")
-    pub = datetime.strptime(e["date"], "%Y-%m-%d").replace(
-        hour=17, tzinfo=timezone.utc
+    pub = datetime.datetime.strptime(e["date"], "%Y-%m-%d").replace(
+        hour=17, tzinfo=datetime.timezone.utc
     )
     return f"""    <item>
-      <title>{escape(e["title"])}</title>
-      <description>{escape(summary)}</description>
-      <itunes:summary>{escape(summary)}</itunes:summary>
-      <pubDate>{format_datetime(pub)}</pubDate>
+      <title>{saxutils.escape(e["title"])}</title>
+      <description>{saxutils.escape(summary)}</description>
+      <itunes:summary>{saxutils.escape(summary)}</itunes:summary>
+      <pubDate>{email_utils.format_datetime(pub)}</pubDate>
       <guid isPermaLink="false">threshold-and-bar-ep{e["no"]:03d}</guid>
-      <enclosure url="{escape(base + "/" + e["file"])}" length="{e["bytes"]}" type="audio/mpeg"/>
+      <enclosure url="{saxutils.escape(base + "/" + e["file"])}" length="{e["bytes"]}" type="audio/mpeg"/>
       <itunes:duration>{e["duration"]}</itunes:duration>
       <itunes:episode>{e["no"]}</itunes:episode>
-      <itunes:image href="{escape(base + "/" + COVER)}"/>
+      <itunes:image href="{saxutils.escape(base + "/" + COVER)}"/>
       <itunes:explicit>false</itunes:explicit>
-      <link>{escape(base)}/</link>
+      <link>{saxutils.escape(base)}/</link>
     </item>"""
 
 
@@ -76,19 +76,19 @@ def render(eps, base, now):
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{escape(TITLE)}</title>
-    <link>{escape(base)}/</link>
-    <description>{escape(DESC)}</description>
+    <title>{saxutils.escape(TITLE)}</title>
+    <link>{saxutils.escape(base)}/</link>
+    <description>{saxutils.escape(DESC)}</description>
     <language>{LANG}</language>
-    <lastBuildDate>{format_datetime(now)}</lastBuildDate>
-    <atom:link href="{escape(base)}/feed.xml" rel="self" type="application/rss+xml"/>
-    <itunes:author>{escape(AUTHOR)}</itunes:author>
-    <itunes:owner><itunes:name>{escape(AUTHOR)}</itunes:name><itunes:email>{EMAIL}</itunes:email></itunes:owner>
-    <itunes:summary>{escape(DESC)}</itunes:summary>
+    <lastBuildDate>{email_utils.format_datetime(now)}</lastBuildDate>
+    <atom:link href="{saxutils.escape(base)}/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:author>{saxutils.escape(AUTHOR)}</itunes:author>
+    <itunes:owner><itunes:name>{saxutils.escape(AUTHOR)}</itunes:name><itunes:email>{EMAIL}</itunes:email></itunes:owner>
+    <itunes:summary>{saxutils.escape(DESC)}</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
-    <itunes:image href="{escape(base + "/" + COVER)}"/>
-    <image><url>{escape(base + "/" + COVER)}</url><title>{escape(TITLE)}</title><link>{escape(base)}/</link></image>
+    <itunes:image href="{saxutils.escape(base + "/" + COVER)}"/>
+    <image><url>{saxutils.escape(base + "/" + COVER)}</url><title>{saxutils.escape(TITLE)}</title><link>{saxutils.escape(base)}/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
 {items}
   </channel>
@@ -103,7 +103,7 @@ def main(argv=None):
     with open(os.path.join(ROOT, "episodes.json")) as f:
         eps = json.load(f)
     eps.sort(key=lambda e: e["no"], reverse=True)
-    feed = render(eps, base, datetime.now(timezone.utc))
+    feed = render(eps, base, datetime.datetime.now(datetime.timezone.utc))
     with open(os.path.join(ROOT, "feed.xml"), "w") as f:
         f.write(feed)
     print(f"feed.xml rebuilt: {len(eps)} episode(s), base {base}")
