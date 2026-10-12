@@ -3,6 +3,12 @@
 
 Base URL is derived from the git remote (user/repo -> https://user.github.io/repo)
 unless given as argv[1] or $FEED_BASE.
+
+Usage:
+
+    python3 build_feed.py [BASE_URL]
+
+Episodes are listed newest first. feed.xml is written next to this script.
 """
 
 import datetime
@@ -11,7 +17,9 @@ import os
 import re
 import subprocess
 import sys
+from collections.abc import Mapping, Sequence
 from email import utils as email_utils
+from typing import Any, Optional
 from xml.sax import saxutils
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +38,24 @@ MUSIC_CREDIT = (
 COVER = "cover.jpg"  # 2000x2000 sRGB JPEG; Apple wants 1400-3000 px square, JPEG or PNG
 
 
-def derive_base(argv):
+def derive_base(argv: Sequence[str]) -> str:
+    """Returns the public base URL the feed's links are built on.
+
+    The first of these wins: argv[1], $FEED_BASE, or the GitHub Pages URL
+    derived from the `origin` remote (user/repo becomes
+    https://user.github.io/repo).
+
+    Args:
+        argv: The command line, program name first.
+
+    Returns:
+        The base URL as given, or the derived Pages URL with no trailing
+        slash.
+
+    Raises:
+        SystemExit: If no URL was given and the origin remote is missing or
+            is not a GitHub URL.
+    """
     if len(argv) > 1:
         return argv[1]
     if os.environ.get("FEED_BASE"):
@@ -49,7 +74,19 @@ def derive_base(argv):
     return f"https://{m.group(1).lower()}.github.io/{m.group(2)}"
 
 
-def item(e, base):
+def item(e: Mapping[str, Any], base: str) -> str:
+    """Renders one episode as an RSS <item> element.
+
+    Args:
+        e: An episodes.json entry with no, date, title, summary, file,
+            bytes and duration keys, and an optional music flag that
+            appends the music credit to the summary.
+        base: The public base URL, without a trailing slash.
+
+    Returns:
+        The <item> element, indented for the channel, with no trailing
+        newline.
+    """
     summary = e["summary"] + (MUSIC_CREDIT if e.get("music") else "")
     pub = datetime.datetime.strptime(e["date"], "%Y-%m-%d").replace(
         hour=17, tzinfo=datetime.timezone.utc
@@ -69,7 +106,19 @@ def item(e, base):
     </item>"""
 
 
-def render(eps, base, now):
+def render(
+    eps: Sequence[Mapping[str, Any]], base: str, now: datetime.datetime
+) -> str:
+    """Renders the complete RSS feed.
+
+    Args:
+        eps: The episodes.json entries, in the order they should appear.
+        base: The public base URL, without a trailing slash.
+        now: The time written as the channel's lastBuildDate.
+
+    Returns:
+        The feed document, ending in a newline.
+    """
     items = "\n".join(item(e, base) for e in eps)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
@@ -96,7 +145,12 @@ def render(eps, base, now):
 """
 
 
-def main(argv=None):
+def main(argv: Optional[Sequence[str]] = None) -> None:
+    """Rebuilds feed.xml from episodes.json and prints a one-line summary.
+
+    Args:
+        argv: The command line, program name first. Defaults to sys.argv.
+    """
     if argv is None:
         argv = sys.argv
     base = derive_base(argv).rstrip("/")
