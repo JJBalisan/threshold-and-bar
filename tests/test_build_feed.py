@@ -4,6 +4,9 @@ Every render happens in a temporary copy of the repo, never in the
 checkout, because build_feed.py writes feed.xml next to itself.
 """
 
+import datetime
+import importlib
+import json
 import os
 import pathlib
 import re
@@ -12,6 +15,8 @@ import subprocess
 import sys
 
 import pytest
+
+import build_feed
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = "https://jjbalisan.github.io/threshold-and-bar"
@@ -152,3 +157,21 @@ def test_unparsable_remote_exits_with_message(workdir):
         b"https://gitlab.com/someone/repo.git\n"
     )
     assert not (workdir / "feed.xml").exists()
+
+
+def test_render_is_byte_identical_to_committed_feed():
+    with open(REPO_ROOT / "episodes.json") as f:
+        eps = json.load(f)
+    eps.sort(key=lambda e: e["no"], reverse=True)
+    now = datetime.datetime(
+        2026, 10, 8, 11, 50, 46, tzinfo=datetime.timezone.utc
+    )
+    feed = build_feed.render(eps, BASE, now)
+    assert feed.encode("utf-8") == _committed_feed()
+
+
+def test_import_has_no_side_effects(monkeypatch):
+    before = (REPO_ROOT / "feed.xml").stat().st_mtime_ns
+    monkeypatch.setattr(sys, "argv", ["x"])
+    importlib.reload(build_feed)
+    assert (REPO_ROOT / "feed.xml").stat().st_mtime_ns == before
