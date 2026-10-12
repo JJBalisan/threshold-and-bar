@@ -8,11 +8,14 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S %Z')  $REPO"
-cd "$REPO" || { echo "repo not found"; exit 1; }
+cd "$REPO" || {
+  echo "repo not found"
+  exit 1
+}
 
 git fetch --quiet origin || echo "fetch failed, continuing"
 
-AHEAD=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)
+AHEAD=$(git rev-list --count origin/main..HEAD 2> /dev/null || echo 0)
 if [ "$AHEAD" -eq 0 ]; then
   echo "nothing to push"
   exit 0
