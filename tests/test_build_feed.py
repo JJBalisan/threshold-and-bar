@@ -4,7 +4,7 @@ Every render happens in a temporary copy of the repo, never in the
 checkout, because build_feed.py writes feed.xml next to itself.
 """
 
-import datetime
+import email.utils
 import importlib
 import json
 import os
@@ -163,11 +163,14 @@ def test_render_is_byte_identical_to_committed_feed():
     with open(REPO_ROOT / "episodes.json") as f:
         eps = json.load(f)
     eps.sort(key=lambda e: e["no"], reverse=True)
-    now = datetime.datetime(
-        2026, 10, 8, 11, 50, 46, tzinfo=datetime.timezone.utc
-    )
+    committed = _committed_feed()
+    # Take the timestamp from the committed feed, because the weekly
+    # scheduled run rewrites feed.xml with a fresh lastBuildDate.
+    match = re.search(rb"<lastBuildDate>([^<]+)</lastBuildDate>", committed)
+    assert match is not None, "committed feed.xml has no lastBuildDate"
+    now = email.utils.parsedate_to_datetime(match.group(1).decode("ascii"))
     feed = build_feed.render(eps, BASE, now)
-    assert feed.encode("utf-8") == _committed_feed()
+    assert feed.encode("utf-8") == committed
 
 
 def test_import_has_no_side_effects(monkeypatch):
