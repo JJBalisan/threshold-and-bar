@@ -40,7 +40,6 @@ ignore = [
   "ANN401",             # Any is sometimes unavoidable
   "PLR0913", "PLR2004", # arg-count and magic-number are judgment calls
   "S101",               # assert is fine in tests (see per-file-ignores)
-  "E501",               # let the formatter own line length, re-enable later
 ]
 
 [lint.pydocstyle]
@@ -57,7 +56,8 @@ ban-relative-imports = "all"
 max-statements = 50      # ~ pyguide 3.18 "about 40 lines"
 
 [lint.per-file-ignores]
-"tests/**" = ["D", "ANN", "S101", "S603", "S607", "PLR", "ARG"]  # tests drive git and the scripts
+# Tests shell out to git and to the scripts under test (S603, S607).
+"tests/**" = ["D", "ANN", "S101", "S603", "S607", "PLR", "ARG"]
 "scripts/**" = ["T20"]
 "examples/**" = ["T20", "D"]
 "build_feed.py" = ["T20"]   # its print is the CLI's output

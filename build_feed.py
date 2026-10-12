@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Rebuild feed.xml from episodes.json.
 
-Base URL is derived from the git remote (user/repo -> https://user.github.io/repo)
-unless given as argv[1] or $FEED_BASE.
+Base URL is derived from the git remote
+(user/repo -> https://user.github.io/repo) unless given as argv[1] or
+$FEED_BASE.
 
 Usage:
 
@@ -25,17 +26,22 @@ from xml.sax import saxutils
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TITLE = "Threshold & Bar"
 DESC = (
-    "A weekly digest of middle- and long-distance running science, hybrid training for "
-    "running and triathlon, and strength sports. Written and narrated by Claude."
+    "A weekly digest of middle- and long-distance running science, hybrid"
+    " training for running and triathlon, and strength sports. Written and"
+    " narrated by Claude."
 )
 AUTHOR, EMAIL, LANG = "Claude", "noreply@anthropic.com", "en-GB"
 MUSIC_CREDIT = (
-    " Music: intro and interludes from \u201cDans la tentative d\u2019accomplir quelque chose\u201d by "
-    "Frederic Lardon feat. Laura Palm\u00e9e (CC0). Outro: \u201cCrap Transition\u201d by Jesse Spillane, "
-    "https://freemusicarchive.org/music/Jesse_Spillane/Art_of_Presentation/Jesse_Spillane_-_Art_of_Presentation_-_04_Crap_Transition/ "
-    "licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); trimmed, faded and mixed with narration."
+    " Music: intro and interludes from \u201cDans la tentative d\u2019accomplir"
+    " quelque chose\u201d by Frederic Lardon feat. Laura Palm\u00e9e (CC0)."
+    " Outro: \u201cCrap Transition\u201d by Jesse Spillane, "
+    "https://freemusicarchive.org/music/Jesse_Spillane/Art_of_Presentation/"
+    "Jesse_Spillane_-_Art_of_Presentation_-_04_Crap_Transition/"
+    " licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/);"
+    " trimmed, faded and mixed with narration."
 )
-COVER = "cover.jpg"  # 2000x2000 sRGB JPEG; Apple wants 1400-3000 px square, JPEG or PNG
+# 2000x2000 sRGB JPEG; Apple wants 1400-3000 px square, JPEG or PNG.
+COVER = "cover.jpg"
 
 
 def derive_base(argv: Sequence[str]) -> str:
@@ -66,7 +72,8 @@ def derive_base(argv: Sequence[str]) -> str:
         ).strip()
     except Exception:
         sys.exit(
-            "No origin remote yet. Pass the base URL: build_feed.py https://user.github.io/repo"
+            "No origin remote yet. Pass the base URL: "
+            "build_feed.py https://user.github.io/repo"
         )
     m = re.search(r"github\.com[:/]([^/]+)/([^/.]+)", url)
     if not m:
@@ -91,18 +98,21 @@ def item(e: Mapping[str, Any], base: str) -> str:
     pub = datetime.datetime.strptime(e["date"], "%Y-%m-%d").replace(
         hour=17, tzinfo=datetime.timezone.utc
     )
+    url = saxutils.escape(base + "/" + e["file"])
+    cover = saxutils.escape(base + "/" + COVER)
+    link = saxutils.escape(base)
     return f"""    <item>
       <title>{saxutils.escape(e["title"])}</title>
       <description>{saxutils.escape(summary)}</description>
       <itunes:summary>{saxutils.escape(summary)}</itunes:summary>
       <pubDate>{email_utils.format_datetime(pub)}</pubDate>
       <guid isPermaLink="false">threshold-and-bar-ep{e["no"]:03d}</guid>
-      <enclosure url="{saxutils.escape(base + "/" + e["file"])}" length="{e["bytes"]}" type="audio/mpeg"/>
+      <enclosure url="{url}" length="{e["bytes"]}" type="audio/mpeg"/>
       <itunes:duration>{e["duration"]}</itunes:duration>
       <itunes:episode>{e["no"]}</itunes:episode>
-      <itunes:image href="{saxutils.escape(base + "/" + COVER)}"/>
+      <itunes:image href="{cover}"/>
       <itunes:explicit>false</itunes:explicit>
-      <link>{saxutils.escape(base)}/</link>
+      <link>{link}/</link>
     </item>"""
 
 
@@ -120,29 +130,36 @@ def render(
         The feed document, ending in a newline.
     """
     items = "\n".join(item(e, base) for e in eps)
+    title = saxutils.escape(TITLE)
+    link = saxutils.escape(base)
+    desc = saxutils.escape(DESC)
+    author = saxutils.escape(AUTHOR)
+    cover = saxutils.escape(base + "/" + COVER)
+    # Each template line is a line of the feed; wrapping the two long ones
+    # would change the output.
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{saxutils.escape(TITLE)}</title>
-    <link>{saxutils.escape(base)}/</link>
-    <description>{saxutils.escape(DESC)}</description>
+    <title>{title}</title>
+    <link>{link}/</link>
+    <description>{desc}</description>
     <language>{LANG}</language>
     <lastBuildDate>{email_utils.format_datetime(now)}</lastBuildDate>
-    <atom:link href="{saxutils.escape(base)}/feed.xml" rel="self" type="application/rss+xml"/>
-    <itunes:author>{saxutils.escape(AUTHOR)}</itunes:author>
-    <itunes:owner><itunes:name>{saxutils.escape(AUTHOR)}</itunes:name><itunes:email>{EMAIL}</itunes:email></itunes:owner>
-    <itunes:summary>{saxutils.escape(DESC)}</itunes:summary>
+    <atom:link href="{link}/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:author>{author}</itunes:author>
+    <itunes:owner><itunes:name>{author}</itunes:name><itunes:email>{EMAIL}</itunes:email></itunes:owner>
+    <itunes:summary>{desc}</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
-    <itunes:image href="{saxutils.escape(base + "/" + COVER)}"/>
-    <image><url>{saxutils.escape(base + "/" + COVER)}</url><title>{saxutils.escape(TITLE)}</title><link>{saxutils.escape(base)}/</link></image>
+    <itunes:image href="{cover}"/>
+    <image><url>{cover}</url><title>{title}</title><link>{link}/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
 {items}
   </channel>
 </rss>
-"""
+"""  # noqa: E501
 
 
 def main(argv: Optional[Sequence[str]] = None) -> None:

@@ -1,4 +1,5 @@
-# Google-style gate for every repo. Install once per clone: `uvx pre-commit install`
+# Google-style gate for every repo.
+# Install once per clone: `uvx pre-commit install`
 # Generated and binary files are left alone: feed.xml is build output, and
 # audio/ and cover.jpg are published media.
 exclude: ^(audio/|cover\.jpg$|feed\.xml$)
@@ -18,7 +19,8 @@ repos:
     rev: v3.12.0-2
     hooks:
       - id: shfmt
-        args: [-i, "2", -ci, -bn, -sr]   # Google shell guide: 2-space, case indent, binary ops at line start
+        # Google shell guide: 2-space, case indent, binary ops at line start.
+        args: [-i, "2", -ci, -bn, -sr]
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.45.0
     hooks:
