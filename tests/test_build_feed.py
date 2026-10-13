@@ -58,6 +58,10 @@ def _run(workdir, args=(), extra_env=None, drop_feed_base=True):
     )
 
 
+def _episode_count():
+    return len(json.loads((REPO_ROOT / "episodes.json").read_text()))
+
+
 def _committed_feed():
     return (REPO_ROOT / "feed.xml").read_bytes()
 
@@ -66,7 +70,7 @@ def test_argv_base_reproduces_committed_feed(workdir):
     result = _run(workdir, [BASE])
     assert result.returncode == 0, result.stderr
     assert result.stdout == (
-        f"feed.xml rebuilt: 5 episode(s), base {BASE}\n".encode()
+        f"feed.xml rebuilt: {_episode_count()} episode(s), base {BASE}\n".encode()
     )
     assert result.stderr == b""
     assert _mask((workdir / "feed.xml").read_bytes()) == _mask(
@@ -118,7 +122,7 @@ def test_base_derived_from_github_remote(workdir):
     result = _run(workdir)
     assert result.returncode == 0, result.stderr
     assert result.stdout == (
-        f"feed.xml rebuilt: 5 episode(s), base {BASE}\n".encode()
+        f"feed.xml rebuilt: {_episode_count()} episode(s), base {BASE}\n".encode()
     )
     assert _mask((workdir / "feed.xml").read_bytes()) == _mask(
         _committed_feed()
