@@ -86,8 +86,9 @@ def item(e: Mapping[str, Any], base: str) -> str:
 
     Args:
         e: An episodes.json entry with no, date, title, summary, file,
-            bytes and duration keys, and an optional music flag that
-            appends the music credit to the summary.
+            bytes and duration keys, an optional music flag that appends
+            the music credit to the summary, and an optional chapters key
+            (the chapters JSON file's path under the base URL).
         base: The public base URL, without a trailing slash.
 
     Returns:
@@ -101,6 +102,13 @@ def item(e: Mapping[str, Any], base: str) -> str:
     url = saxutils.escape(base + "/" + e["file"])
     cover = saxutils.escape(base + "/" + COVER)
     link = saxutils.escape(base)
+    chapters = ""
+    if e.get("chapters"):
+        curl = saxutils.escape(base + "/" + e["chapters"])
+        chapters = (
+            f'\n      <podcast:chapters url="{curl}"'
+            ' type="application/json+chapters"/>'
+        )
     return f"""    <item>
       <title>{saxutils.escape(e["title"])}</title>
       <description>{saxutils.escape(summary)}</description>
@@ -112,7 +120,7 @@ def item(e: Mapping[str, Any], base: str) -> str:
       <itunes:episode>{e["no"]}</itunes:episode>
       <itunes:image href="{cover}"/>
       <itunes:explicit>false</itunes:explicit>
-      <link>{link}/</link>
+      <link>{link}/</link>{chapters}
     </item>"""
 
 
@@ -140,7 +148,8 @@ def render(
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-     xmlns:atom="http://www.w3.org/2005/Atom">
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:podcast="https://podcastindex.org/namespace/1.0">
   <channel>
     <title>{title}</title>
     <link>{link}/</link>

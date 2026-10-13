@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-     xmlns:atom="http://www.w3.org/2005/Atom">
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:podcast="https://podcastindex.org/namespace/1.0">
   <channel>
     <title>Threshold &amp; Bar</title>
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Mon, 12 Oct 2026 12:34:06 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 21:49:44 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
     <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@anthropic.com</itunes:email></itunes:owner>
