@@ -162,6 +162,8 @@ def render(
     <itunes:summary>{desc}</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
+    <itunes:block>Yes</itunes:block>
+    <podcast:locked owner="{EMAIL}">yes</podcast:locked>
     <itunes:image href="{cover}"/>
     <image><url>{cover}</url><title>{title}</title><link>{link}/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
