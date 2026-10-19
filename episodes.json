@@ -56,5 +56,16 @@
     "bytes": 18891823,
     "duration": "00:38:52",
     "music": true
+  },
+  {
+    "no": 7,
+    "date": "2026-10-19",
+    "title": "Tola in Beijing, and threshold by feel",
+    "summary": "A week after episode six. Tamirat Tola's 2:03:10 in Beijing, the fastest marathon on Chinese roads, with Amsterdam and Delhi the same day; Jacob Kiplimo's account of his Chicago fade and the New York City Marathon withdrawals. Two safety stories from mass-participation races, in Seoul and Melbourne, kept to what has been reported. Marius Bakken on That Triathlon Show: how the Norwegian method sets sub-threshold intensity with and without a lactate meter, and what he says about the limits of the evidence. The Real Science of Sport's argument about why the Kona leaders collapsed. Carbohydrate and durability read across three studies, a five-day low energy availability trial asking whether extra protein protects bone markers, a narrative review on muscle growth and local endurance, and a correction notice on a 2022 wearables paper. Includes a short excerpt, for commentary, from That Triathlon Show.",
+    "file": "audio/ep007.mp3",
+    "bytes": 11108375,
+    "duration": "00:22:39",
+    "music": true,
+    "chapters": "audio/ep007.chapters.json"
   }
 ]
