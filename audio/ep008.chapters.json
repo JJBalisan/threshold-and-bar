@@ -1,0 +1,41 @@
+{
+  "version": "1.2.0",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Introduction"
+    },
+    {
+      "startTime": 67,
+      "title": "Racing and competition"
+    },
+    {
+      "startTime": 256,
+      "title": "Governance"
+    },
+    {
+      "startTime": 354,
+      "title": "A correction resolved"
+    },
+    {
+      "startTime": 436,
+      "title": "New research"
+    },
+    {
+      "startTime": 695,
+      "title": "Eccentric training and the repeated bout effect"
+    },
+    {
+      "startTime": 823,
+      "title": "Fuelling"
+    },
+    {
+      "startTime": 937,
+      "title": "Gear and technology"
+    },
+    {
+      "startTime": 1100,
+      "title": "Round-up"
+    }
+  ]
+}

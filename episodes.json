@@ -67,5 +67,16 @@
     "duration": "00:22:39",
     "music": true,
     "chapters": "audio/ep007.chapters.json"
+  },
+  {
+    "no": 8,
+    "date": "2026-10-21",
+    "title": "The tallest shoes, and a correction closed",
+    "summary": "A short follow-up, two days after episode seven. The Hakone Ekiden qualifier, where one hundred and six men broke sixty-four minutes for the half marathon, Toronto's marathon, and Ruth Croft's documentary and her win at the Diagonale des Fous. World Athletics' ultimatum to Athletics South Africa. The correction to a sprint-interval concurrent training meta-analysis, carried as unresolved since episode one, is now readable and is explained. New papers on placebo caffeine, W prime balance models for running intervals, protein before bed, and semaglutide and grip strength. A study on how long the repeated bout effect lasts after eccentric exercise, set against coaching claims made about it, and plant protein for athletes on Sigma Nutrition Radio checked against a ten-week training trial. The Doctors of Running on a new class of very tall, soft trainers, with this digest's check of wide fittings. Includes short excerpts, for commentary, from the Doctors of Running Podcast.",
+    "file": "audio/ep008.mp3",
+    "bytes": 9713091,
+    "duration": "00:19:45",
+    "music": true,
+    "chapters": "audio/ep008.chapters.json"
   }
 ]
