@@ -2,7 +2,7 @@
 
 A weekly digest on middle- and long-distance running science, hybrid training for
 running and triathlon, and strength sports. Audio is written and narrated
-automatically each Wednesday at 18:00 London and added here.
+automatically each Wednesday afternoon (London) and added here.
 
 ## Setup — three steps, once
 
@@ -13,7 +13,7 @@ automatically each Wednesday at 18:00 London and added here.
 
        cd ~/Developer/active/threshold-and-bar
        git remote add origin git@github.com:<your-username>/threshold-and-bar.git
-       python3 build_feed.py          # derives the Pages URL from the remote
+       python3 ~/.local/share/threshold-and-bar/bin/build_feed.py .   # derives the Pages URL from the remote
        git add -A && git commit -m "feed.xml" && git push -u origin main
 
 3. **Turn on Pages.** Repo → Settings → Pages → Source: *Deploy from a branch*,
@@ -34,27 +34,30 @@ safe to hand to anyone.
 
     episodes.json      the register, one entry per episode, newest first
     audio/epNNN.mp3    episode audio
-    build_feed.py      regenerates feed.xml from episodes.json
+    show.json          the show's feed settings (title, categories, guid prefix)
     feed.xml           the RSS feed podcast apps poll
     index.html         page listing the episodes with inline players
     deploy/push.sh     catch-up push, run by launchd (see below)
 
-`build_feed.py` derives the public base URL from the `origin` remote, so
+The feed is built by the shared kit (`threshold-and-bar-tools`,
+`bin/build_feed.py`), which derives the public base URL from the `origin` remote, so
 `github.com/<user>/threshold-and-bar` becomes `https://<user>.github.io/threshold-and-bar`.
-Override with an argument or `$FEED_BASE`.
+Override with an argument, `$FEED_BASE` or `base_url` in `show.json`.
 
 ## Adding an episode by hand
 
-    cp new.mp3 audio/ep002.mp3
-    # add an entry to episodes.json — bytes is the file size, duration is HH:MM:SS
-    python3 build_feed.py
-    git add -A && git commit -m "ep002" && git push
+    ~/.local/share/threshold-and-bar/venv-mlx/bin/python \
+      ~/.local/share/threshold-and-bar/bin/publish_episode.py . --no 2 \
+      --title "<title>" --summary "<summary>" --mp3 new.mp3
+
+It switches to main, copies the MP3, appends episodes.json, rebuilds the
+feed, commits and pushes.
 
 ## How episodes get here
 
-A local Claude Code scheduled task (`threshold-and-bar-digest`, Wednesdays 18:00
+A local Claude Code scheduled task (`threshold-and-bar-digest`, Wednesdays 14:00
 London) researches the week, renders the MP3 on this Mac, and commits and pushes it
-here directly. It needs the Claude desktop app open; if the app is closed at 18:00 it
+here directly. It needs the Claude desktop app open; if the app is closed then it
 runs on next launch.
 
 If that push fails (SSH agent locked, offline), the commit stays local and
