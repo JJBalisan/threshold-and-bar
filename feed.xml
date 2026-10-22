@@ -8,15 +8,15 @@
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 21 Oct 2026 13:23:42 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 19:19:47 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
-    <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@anthropic.com</itunes:email></itunes:owner>
+    <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@jjbalisan.com</itunes:email></itunes:owner>
     <itunes:summary>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <itunes:block>Yes</itunes:block>
-    <podcast:locked owner="noreply@anthropic.com">yes</podcast:locked>
+    <podcast:locked owner="noreply@jjbalisan.com">yes</podcast:locked>
     <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
     <image><url>https://jjbalisan.github.io/threshold-and-bar/cover.jpg</url><title>Threshold &amp; Bar</title><link>https://jjbalisan.github.io/threshold-and-bar/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
