@@ -39,7 +39,7 @@ safe to hand to anyone.
     index.html         page listing the episodes with inline players
     deploy/push.sh     catch-up push, run by launchd (see below)
 
-The feed is built by the shared kit (`threshold-and-bar-tools`,
+The feed is built by the shared kit (`podcast-kit`,
 `bin/build_feed.py`), which derives the public base URL from the `origin` remote, so
 `github.com/<user>/threshold-and-bar` becomes `https://<user>.github.io/threshold-and-bar`.
 Override with an argument, `$FEED_BASE` or `base_url` in `show.json`.
