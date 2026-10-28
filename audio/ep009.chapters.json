@@ -1,0 +1,61 @@
+{
+  "version": "1.2.0",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Introduction"
+    },
+    {
+      "startTime": 88,
+      "title": "Racing and results"
+    },
+    {
+      "startTime": 356,
+      "title": "Doping and governance"
+    },
+    {
+      "startTime": 454,
+      "title": "Health and fitness news"
+    },
+    {
+      "startTime": 609,
+      "title": "Running science"
+    },
+    {
+      "startTime": 839,
+      "title": "Durability and duty factor"
+    },
+    {
+      "startTime": 999,
+      "title": "Intensity, sex and the heart"
+    },
+    {
+      "startTime": 1383,
+      "title": "Strength sports"
+    },
+    {
+      "startTime": 1577,
+      "title": "Fuelling"
+    },
+    {
+      "startTime": 1977,
+      "title": "Recovery claims that didn't hold up"
+    },
+    {
+      "startTime": 2127,
+      "title": "Gear and technology"
+    },
+    {
+      "startTime": 2316,
+      "title": "Equipment"
+    },
+    {
+      "startTime": 2335,
+      "title": "What the sources published"
+    },
+    {
+      "startTime": 2451,
+      "title": "Close"
+    }
+  ]
+}

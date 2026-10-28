@@ -78,5 +78,18 @@
     "duration": "00:19:45",
     "music": true,
     "chapters": "audio/ep008.chapters.json"
+  },
+  {
+    "no": 9,
+    "date": "2026-10-28",
+    "title": "Lactate in a bottle, and the slow way to better form",
+    "summary": "Frankfurt, Valencia, the Golden Trail final and a shared backyard ultra record; a provisional EPO suspension for the world marathon champion and a six-year ban built on a forged document. The lactate drink used at the Tour goes on sale, checked against the trials. A year-long trial on running form, minimalist shoes and running economy; marathon versus trail fatigue; wearable metrics and tendon load; duty factor and durability. Lean body mass and the sex difference in aerobic capacity, DFA alpha one thresholds, the athlete's heart and how much cardio is too much. Progressive overload, progesterone and muscle protein synthesis, plant versus animal protein, bicarbonate over ten kilometres, cold drinks in the heat, and an updated review of plant-based sports nutrition. Recovery claims that didn't hold up, and wearables news. Includes a short excerpt, for commentary, from the Barbell Medicine Podcast.",
+    "file": "audio/ep009.mp3",
+    "bytes": 20078560,
+    "duration": "00:41:20",
+    "music": true,
+    "chapters": "audio/ep009.chapters.json",
+    "transcript": "audio/ep009.transcript.html",
+    "vtt": "audio/ep009.vtt"
   }
 ]
