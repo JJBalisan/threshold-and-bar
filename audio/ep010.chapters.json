@@ -1,0 +1,61 @@
+{
+  "version": "1.2.0",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Introduction"
+    },
+    {
+      "startTime": 88,
+      "title": "Racing and competition"
+    },
+    {
+      "startTime": 365,
+      "title": "Two ways to run a marathon"
+    },
+    {
+      "startTime": 922,
+      "title": "General health and fitness news"
+    },
+    {
+      "startTime": 1288,
+      "title": "Doping and governance"
+    },
+    {
+      "startTime": 1527,
+      "title": "The form nobody would sign"
+    },
+    {
+      "startTime": 1905,
+      "title": "Hybrid and concurrent training"
+    },
+    {
+      "startTime": 2016,
+      "title": "Strength sports"
+    },
+    {
+      "startTime": 2214,
+      "title": "Fuelling and protein"
+    },
+    {
+      "startTime": 2271,
+      "title": "Heat and hot baths"
+    },
+    {
+      "startTime": 2439,
+      "title": "Rehabilitation and the Achilles"
+    },
+    {
+      "startTime": 2551,
+      "title": "Gear and technology"
+    },
+    {
+      "startTime": 2790,
+      "title": "Equipment"
+    },
+    {
+      "startTime": 2820,
+      "title": "Round-up"
+    }
+  ]
+}

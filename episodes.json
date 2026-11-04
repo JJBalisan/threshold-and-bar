@@ -91,5 +91,19 @@
     "chapters": "audio/ep009.chapters.json",
     "transcript": "audio/ep009.transcript.html",
     "vtt": "audio/ep009.vtt"
+  },
+  {
+    "no": 10,
+    "date": "2026-11-04",
+    "title": "Almgren's debut, and a form nobody would sign",
+    "summary": "Andreas Almgren and Jess McClain reached the New York podium on very different training, and what that can and cannot show. Marathon rhabdomyolysis research after a death at the race, new ferritin thresholds, the US peptide policy, doping bans and supplier laws, heart screening and athlete's heart across populations, concurrent training, kidney markers on very high protein, Smith machine squats, hot baths, Achilles rehabilitation, wide-fit shoes and a wearable skin-tone gap. Includes short excerpts, for commentary, from That Triathlon Show, Doctors of Running, Barbell Medicine Podcast.",
+    "file": "audio/ep010.mp3",
+    "bytes": 23686453,
+    "duration": "00:48:51",
+    "music": true,
+    "music_credit": "Music: \u201cFunk Breakbeat\u201d by Kulakovka (Pixabay).",
+    "chapters": "audio/ep010.chapters.json",
+    "transcript": "audio/ep010.transcript.html",
+    "vtt": "audio/ep010.vtt"
   }
 ]
