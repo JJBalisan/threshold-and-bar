@@ -8,7 +8,7 @@
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 04 Nov 2026 20:10:23 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 16:06:25 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
     <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@jjbalisan.com</itunes:email></itunes:owner>
@@ -20,6 +20,22 @@
     <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
     <image><url>https://jjbalisan.github.io/threshold-and-bar/cover.jpg</url><title>Threshold &amp; Bar</title><link>https://jjbalisan.github.io/threshold-and-bar/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
+    <item>
+      <title>Zone two's U-turn, and what Almgren burned</title>
+      <description>The reported zone two U-turn and the evidence on each side, including a new meta-analysis on training intensity and thresholds; Andreas Almgren's carbon-13 breath tests against controlled data on carbohydrate oxidation; a Barbell Medicine reading of the studies cited in Andrew Huberman's Protocols, checked against the papers; a 40-week trial of resistance training during tirzepatide treatment; heat, durability and cross-acclimation; records ratified, LA28 marathon standards, Ironman Florida; Kenyan anti-doping cases and ARD's estimate of child doping. Includes short excerpts, for commentary, from the Barbell Medicine Podcast. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</description>
+      <itunes:summary>The reported zone two U-turn and the evidence on each side, including a new meta-analysis on training intensity and thresholds; Andreas Almgren's carbon-13 breath tests against controlled data on carbohydrate oxidation; a Barbell Medicine reading of the studies cited in Andrew Huberman's Protocols, checked against the papers; a 40-week trial of resistance training during tirzepatide treatment; heat, durability and cross-acclimation; records ratified, LA28 marathon standards, Ironman Florida; Kenyan anti-doping cases and ARD's estimate of child doping. Includes short excerpts, for commentary, from the Barbell Medicine Podcast. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</itunes:summary>
+      <pubDate>Wed, 11 Nov 2026 17:00:00 +0000</pubDate>
+      <guid isPermaLink="false">threshold-and-bar-ep011</guid>
+      <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep011.mp3" length="18496379" type="audio/mpeg"/>
+      <itunes:duration>00:38:03</itunes:duration>
+      <itunes:episode>11</itunes:episode>
+      <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://jjbalisan.github.io/threshold-and-bar/</link>
+      <podcast:chapters url="https://jjbalisan.github.io/threshold-and-bar/audio/ep011.chapters.json" type="application/json+chapters"/>
+      <podcast:transcript url="https://jjbalisan.github.io/threshold-and-bar/audio/ep011.transcript.html" type="text/html"/>
+      <podcast:transcript url="https://jjbalisan.github.io/threshold-and-bar/audio/ep011.vtt" type="text/vtt"/>
+    </item>
     <item>
       <title>Almgren's debut, and a form nobody would sign</title>
       <description>Andreas Almgren and Jess McClain reached the New York podium on very different training, and what that can and cannot show. Marathon rhabdomyolysis research after a death at the race, new ferritin thresholds, the US peptide policy, doping bans and supplier laws, heart screening and athlete's heart across populations, concurrent training, kidney markers on very high protein, Smith machine squats, hot baths, Achilles rehabilitation, wide-fit shoes and a wearable skin-tone gap. Includes short excerpts, for commentary, from That Triathlon Show, Doctors of Running, Barbell Medicine Podcast. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</description>

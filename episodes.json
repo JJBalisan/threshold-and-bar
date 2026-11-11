@@ -105,5 +105,19 @@
     "chapters": "audio/ep010.chapters.json",
     "transcript": "audio/ep010.transcript.html",
     "vtt": "audio/ep010.vtt"
+  },
+  {
+    "no": 11,
+    "date": "2026-11-11",
+    "title": "Zone two's U-turn, and what Almgren burned",
+    "summary": "The reported zone two U-turn and the evidence on each side, including a new meta-analysis on training intensity and thresholds; Andreas Almgren's carbon-13 breath tests against controlled data on carbohydrate oxidation; a Barbell Medicine reading of the studies cited in Andrew Huberman's Protocols, checked against the papers; a 40-week trial of resistance training during tirzepatide treatment; heat, durability and cross-acclimation; records ratified, LA28 marathon standards, Ironman Florida; Kenyan anti-doping cases and ARD's estimate of child doping. Includes short excerpts, for commentary, from the Barbell Medicine Podcast.",
+    "file": "audio/ep011.mp3",
+    "bytes": 18496379,
+    "duration": "00:38:03",
+    "music": true,
+    "music_credit": "Music: \u201cFunk Breakbeat\u201d by Kulakovka (Pixabay).",
+    "chapters": "audio/ep011.chapters.json",
+    "transcript": "audio/ep011.transcript.html",
+    "vtt": "audio/ep011.vtt"
   }
 ]

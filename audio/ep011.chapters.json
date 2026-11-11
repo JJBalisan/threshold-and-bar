@@ -1,0 +1,53 @@
+{
+  "version": "1.2.0",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Introduction"
+    },
+    {
+      "startTime": 73,
+      "title": "Racing and competition"
+    },
+    {
+      "startTime": 339,
+      "title": "Doping and governance"
+    },
+    {
+      "startTime": 535,
+      "title": "General health and fitness news"
+    },
+    {
+      "startTime": 760,
+      "title": "Training intensity and the zone two argument"
+    },
+    {
+      "startTime": 1033,
+      "title": "Heat, durability and recovery"
+    },
+    {
+      "startTime": 1282,
+      "title": "Fuelling"
+    },
+    {
+      "startTime": 1625,
+      "title": "Strength: a book against its citations"
+    },
+    {
+      "startTime": 1891,
+      "title": "Hybrid and strength research"
+    },
+    {
+      "startTime": 2016,
+      "title": "Gear and technology"
+    },
+    {
+      "startTime": 2117,
+      "title": "Round-up"
+    },
+    {
+      "startTime": 2243,
+      "title": "Close"
+    }
+  ]
+}
