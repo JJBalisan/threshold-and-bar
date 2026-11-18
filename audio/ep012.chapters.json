@@ -1,0 +1,49 @@
+{
+  "version": "1.2.0",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Introduction"
+    },
+    {
+      "startTime": 86,
+      "title": "Racing and competition"
+    },
+    {
+      "startTime": 371,
+      "title": "Health and fitness news"
+    },
+    {
+      "startTime": 724,
+      "title": "Running science"
+    },
+    {
+      "startTime": 1188,
+      "title": "Heat and fuelling"
+    },
+    {
+      "startTime": 1659,
+      "title": "Hybrid racing"
+    },
+    {
+      "startTime": 1742,
+      "title": "RED S on Fast Talk"
+    },
+    {
+      "startTime": 1885,
+      "title": "Strength sports"
+    },
+    {
+      "startTime": 2064,
+      "title": "Gear and technology"
+    },
+    {
+      "startTime": 2254,
+      "title": "Equipment"
+    },
+    {
+      "startTime": 2282,
+      "title": "Round up"
+    }
+  ]
+}

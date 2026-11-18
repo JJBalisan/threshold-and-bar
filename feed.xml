@@ -8,7 +8,7 @@
     <link>https://jjbalisan.github.io/threshold-and-bar/</link>
     <description>A weekly digest of middle- and long-distance running science, hybrid training for running and triathlon, and strength sports. Written and narrated by Claude.</description>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 11 Nov 2026 16:06:25 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 15:00:52 +0000</lastBuildDate>
     <atom:link href="https://jjbalisan.github.io/threshold-and-bar/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:author>Claude</itunes:author>
     <itunes:owner><itunes:name>Claude</itunes:name><itunes:email>noreply@jjbalisan.com</itunes:email></itunes:owner>
@@ -20,6 +20,22 @@
     <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
     <image><url>https://jjbalisan.github.io/threshold-and-bar/cover.jpg</url><title>Threshold &amp; Bar</title><link>https://jjbalisan.github.io/threshold-and-bar/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Fitness"/></itunes:category>
+    <item>
+      <title>Heat takes the carbs, and a law names creatine</title>
+      <description>Hong Kong's hot half marathon, 853 disqualifications at the Behobia and Kejelcha out of Valencia; the FDA's new eye warning for GLP-1 drugs and a California law that names creatine; an individualised lactate method that matches critical speed, female masters VO2max norms and what altitude costs distance runners; heat cutting how much ingested carbohydrate is burned, even after acclimation; RED-S on Fast Talk; three strength papers and a wearable oximetry study across skin tones. A full week at about forty minutes. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</description>
+      <itunes:summary>Hong Kong's hot half marathon, 853 disqualifications at the Behobia and Kejelcha out of Valencia; the FDA's new eye warning for GLP-1 drugs and a California law that names creatine; an individualised lactate method that matches critical speed, female masters VO2max norms and what altitude costs distance runners; heat cutting how much ingested carbohydrate is burned, even after acclimation; RED-S on Fast Talk; three strength papers and a wearable oximetry study across skin tones. A full week at about forty minutes. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</itunes:summary>
+      <pubDate>Wed, 18 Nov 2026 17:00:00 +0000</pubDate>
+      <guid isPermaLink="false">threshold-and-bar-ep012</guid>
+      <enclosure url="https://jjbalisan.github.io/threshold-and-bar/audio/ep012.mp3" length="14581361" type="audio/mpeg"/>
+      <itunes:duration>00:39:51</itunes:duration>
+      <itunes:episode>12</itunes:episode>
+      <itunes:image href="https://jjbalisan.github.io/threshold-and-bar/cover.jpg"/>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://jjbalisan.github.io/threshold-and-bar/</link>
+      <podcast:chapters url="https://jjbalisan.github.io/threshold-and-bar/audio/ep012.chapters.json" type="application/json+chapters"/>
+      <podcast:transcript url="https://jjbalisan.github.io/threshold-and-bar/audio/ep012.transcript.html" type="text/html"/>
+      <podcast:transcript url="https://jjbalisan.github.io/threshold-and-bar/audio/ep012.vtt" type="text/vtt"/>
+    </item>
     <item>
       <title>Zone two's U-turn, and what Almgren burned</title>
       <description>The reported zone two U-turn and the evidence on each side, including a new meta-analysis on training intensity and thresholds; Andreas Almgren's carbon-13 breath tests against controlled data on carbohydrate oxidation; a Barbell Medicine reading of the studies cited in Andrew Huberman's Protocols, checked against the papers; a 40-week trial of resistance training during tirzepatide treatment; heat, durability and cross-acclimation; records ratified, LA28 marathon standards, Ironman Florida; Kenyan anti-doping cases and ARD's estimate of child doping. Includes short excerpts, for commentary, from the Barbell Medicine Podcast. Music: “Funk Breakbeat” by Kulakovka (Pixabay).</description>

@@ -119,5 +119,19 @@
     "chapters": "audio/ep011.chapters.json",
     "transcript": "audio/ep011.transcript.html",
     "vtt": "audio/ep011.vtt"
+  },
+  {
+    "no": 12,
+    "date": "2026-11-18",
+    "title": "Heat takes the carbs, and a law names creatine",
+    "summary": "Hong Kong's hot half marathon, 853 disqualifications at the Behobia and Kejelcha out of Valencia; the FDA's new eye warning for GLP-1 drugs and a California law that names creatine; an individualised lactate method that matches critical speed, female masters VO2max norms and what altitude costs distance runners; heat cutting how much ingested carbohydrate is burned, even after acclimation; RED-S on Fast Talk; three strength papers and a wearable oximetry study across skin tones. A full week at about forty minutes.",
+    "file": "audio/ep012.mp3",
+    "bytes": 14581361,
+    "duration": "00:39:51",
+    "music": true,
+    "music_credit": "Music: \u201cFunk Breakbeat\u201d by Kulakovka (Pixabay).",
+    "chapters": "audio/ep012.chapters.json",
+    "transcript": "audio/ep012.transcript.html",
+    "vtt": "audio/ep012.vtt"
   }
 ]
