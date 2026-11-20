@@ -120,3 +120,93 @@ def test_push_failure_exits_1(repos):
         "pushing 1 commit(s)",
         "PUSH FAILED (check: ssh -T git@github.com)",
     ]
+
+
+def _run_raw(script_dir):
+    """Runs push.sh from script_dir/deploy; returns code and full output."""
+    env = dict(os.environ)
+    env["GIT_CEILING_DIRECTORIES"] = str(script_dir.parent)
+    result = subprocess.run(
+        ["/bin/bash", str(script_dir / "deploy" / "push.sh")],
+        cwd=script_dir.parent,
+        env=env,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        check=False,
+    )
+    return result.returncode, result.stdout
+
+
+# Issue #9: push.sh counts origin/main..HEAD but pushes main.
+
+
+def test_unpushed_main_is_pushed_from_another_branch(repos):
+    bare, clone = repos
+    _commit(clone, "episode")
+    main_sha = _git("rev-parse", "main", cwd=clone)
+    main_short = _git("rev-parse", "--short", "main", cwd=clone)
+    _git("switch", "-q", "-c", "side", "origin/main", cwd=clone)
+    code, _, lines = _run(clone)
+    assert code == 0
+    assert lines == ["pushing 1 commit(s)", f"ok -> {main_short}"]
+    assert _git("rev-parse", "main", cwd=bare) == main_sha
+
+
+def test_branch_ahead_with_main_pushed_is_nothing_to_push(repos):
+    bare, clone = repos
+    before = _git("rev-parse", "main", cwd=bare)
+    _git("switch", "-q", "-c", "side", cwd=clone)
+    _commit(clone, "a")
+    _commit(clone, "b")
+    code, _, lines = _run(clone)
+    assert code == 0
+    assert lines == ["nothing to push"]
+    assert _git("rev-parse", "main", cwd=bare) == before
+
+
+# Issue #10: any git rev-list error is reported as "nothing to push".
+
+
+def test_missing_tracking_ref_and_failed_fetch_is_an_error(repos):
+    _, clone = repos
+    _commit(clone, "episode")
+    _git("update-ref", "-d", "refs/remotes/origin/main", cwd=clone)
+    _git("remote", "set-url", "origin", str(clone.parent / "gone"), cwd=clone)
+    code, out = _run_raw(clone)
+    assert code == 1, out
+    assert "nothing to push" not in out
+
+
+def test_not_a_repo_is_an_error(tmp_path):
+    loose = tmp_path / "loose"
+    (loose / "deploy").mkdir(parents=True)
+    shutil.copy2(REPO_ROOT / "deploy" / "push.sh", loose / "deploy")
+    code, out = _run_raw(loose)
+    assert code == 1, out
+    assert "nothing to push" not in out
+
+
+# Issue #11: a diverged main fails every run with an SSH hint.
+
+
+def test_diverged_main_is_not_blamed_on_ssh(repos):
+    bare, clone = repos
+    other = clone.parent / "other"
+    _git("clone", "-q", str(bare), str(other), cwd=clone.parent)
+    _commit(other, "merged-pr")
+    _git("push", "-q", "origin", "main", cwd=other)
+    _commit(clone, "episode")
+    episode = _git("rev-parse", "main", cwd=clone)
+    code, out = _run_raw(clone)
+    assert "ssh -T" not in out, out
+    if code == 0:
+        # Fix by rebasing: origin now holds the episode on top of the PR.
+        log = _git("log", "--format=%s", "main", cwd=bare).splitlines()
+        assert log[:2] == ["episode", "merged-pr"], log
+    else:
+        # Fix by reporting: the log names the divergence, and nothing is
+        # lost from either side.
+        assert code == 1, out
+        assert "diverged" in out.lower(), out
+        assert _git("rev-parse", "main", cwd=clone) == episode
