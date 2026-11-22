@@ -99,22 +99,57 @@
     } catch (e) { field.select(); done("Select & copy"); }
   });
 
-  fetch("episodes.json").then(function(r){ return r.json(); }).then(function(eps){
-    eps.sort(function(a,b){ return b.no - a.no; });
-    var list = document.getElementById("eplist");
-    eps.forEach(function(e){
-      var el = document.createElement("article");
-      el.className = "ep";
-      el.innerHTML =
-        '<div class="epmeta"><span class="no">EP ' + String(e.no).padStart(3,"0") + '</span>' +
-        '<span>' + e.date + '</span><span>' + e.duration + '</span></div>' +
-        '<h3 class="eptitle"></h3><p class="epdesc"></p>' +
-        '<audio controls preload="none" src="' + e.file + '"></audio>';
-      el.querySelector(".eptitle").textContent = e.title;
-      el.querySelector(".epdesc").textContent = e.summary;
-      list.appendChild(el);
-    });
-  }).catch(function(){});
+  /**
+   * Builds one episode article using text and attributes only.
+   * @param {!Object} e An entry from episodes.json.
+   * @return {!Element} The article element.
+   */
+  const buildEpisode = function (e) {
+    const el = document.createElement('article');
+    el.className = 'ep';
+    const meta = document.createElement('div');
+    meta.className = 'epmeta';
+    const no = document.createElement('span');
+    no.className = 'no';
+    no.textContent = 'EP ' + String(e.no).padStart(3, '0');
+    const date = document.createElement('span');
+    date.textContent = e.date;
+    const dur = document.createElement('span');
+    dur.textContent = e.duration;
+    meta.append(no, date, dur);
+    const title = document.createElement('h3');
+    title.className = 'eptitle';
+    title.textContent = e.title;
+    const desc = document.createElement('p');
+    desc.className = 'epdesc';
+    desc.textContent = e.summary;
+    const audio = document.createElement('audio');
+    audio.setAttribute('controls', '');
+    audio.setAttribute('preload', 'none');
+    audio.setAttribute('src', e.file);
+    el.append(meta, title, desc, audio);
+    return el;
+  };
+
+  fetch('episodes.json').then(function (r) {
+    if (!r.ok) {
+      throw new Error('episodes.json: HTTP ' + r.status);
+    }
+    return r.json();
+  }).then(function (eps) {
+    if (!Array.isArray(eps)) {
+      throw new TypeError('episodes.json is not an array');
+    }
+    eps.sort(function (a, b) { return b.no - a.no; });
+    const list = document.getElementById('eplist');
+    eps.forEach(function (e) { list.appendChild(buildEpisode(e)); });
+  }).catch(function (err) {
+    console.error(err);
+    const list = document.getElementById('eplist');
+    const msg = document.createElement('p');
+    msg.textContent = 'Episodes could not be loaded. Please try again later.';
+    list.replaceChildren(msg);
+  });
 </script>
 </body>
 </html>
